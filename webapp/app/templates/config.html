@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}View config{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <h2>Content of the database configuration file</h2>
+    <pre>{{ config_file }}</pre>
+    <h2>Content of the Vault token file</h2>
+    <pre>{{ token_file }}</pre>
+    <h2>Content of the Vault role ID file</h2>
+    <pre>{{ role_id_file }}</pre>
+    <h2>Content of the Vault secret ID file</h2>
+    <pre>{{ secret_id_file }}</pre>
+{% endblock %}
+

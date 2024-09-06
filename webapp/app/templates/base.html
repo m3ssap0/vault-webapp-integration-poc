@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <h1>Vault/webapp integration PoC</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('.index') }}">Index</a></li>
+                <li><a href="{{ url_for('.add') }}">Add note</a></li>
+                <li><a href="{{ url_for('.config') }}">View config</a></li>
+            </ul>
+        </nav>
+        <section>
+            <header>
+                {% block header %}{% endblock %}
+            </header>
+            {% block content %}{% endblock %}
+        </section>
+    </body>
+</html>

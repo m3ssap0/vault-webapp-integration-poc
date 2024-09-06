@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Index{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if notes is not none %}
+    <ul>
+    {% for n in notes %}
+        <li><a href="./read/{{ n[0] }}">{{ n[0] }}</a></li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}
+

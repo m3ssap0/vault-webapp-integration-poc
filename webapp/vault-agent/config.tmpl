@@ -1,0 +1,7 @@
+{{ with secret "database/creds/mysql-role" }}
+[DATABASE]
+MYSQL_HOST = database
+MYSQL_USER = {{ .Data.username }}
+MYSQL_PASSWORD = {{ .Data.password }}
+MYSQL_DB = notes_webapp
+{{ end }}

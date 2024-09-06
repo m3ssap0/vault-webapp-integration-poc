@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Add note{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action="{{ url_for('.add') }}">
+        <p><label for="note">Your note:</label><br /></p>
+        <textarea id="note" name="note" rows="4" cols="50">Write your note here!</textarea><br />
+        <button type="submit">Add note</button>
+    </form>
+{% endblock %}
+

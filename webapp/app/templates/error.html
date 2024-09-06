@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Internal Server Error{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <p><em>{{ error_message }}</em></p>
+{% endblock %}
+

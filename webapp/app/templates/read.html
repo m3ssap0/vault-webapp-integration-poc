@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Read note{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <p><strong>Note ID:</strong> {{ note_id }}</p>
+    <p><strong>Content:</strong></p>
+    <pre>{{ note_content }}</pre>
+{% endblock %}
+
