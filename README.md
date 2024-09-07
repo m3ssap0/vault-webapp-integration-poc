@@ -25,6 +25,10 @@ The project is composed by different containerized components:
 * `database` is the MySQL database used by the web application.
 * `webapp` is the Flask web application that uses the MySQL database to store and read data.
 
+### Architecture
+
+![](vault-webapp-integration-poc.png)
+
 ### How does it work?
 
 Here the list of things that happen when the infrastructure is created.
@@ -48,7 +52,7 @@ Here the list of things that happen when the infrastructure is created.
    1. The AppRole auth method is enabled on the Vault server.
    1. An AppRole called `webapp-role` for the web application is created on the Vault server. The AppRole is configured with the policy defined before.
    1. `role_id` and `secret_id` for the created AppRole are stored in the volume `vault-agent-data`.
-   1. The container loops to recreate `secret_id` to prevent lockout after expiration of the `webapp` container (please consider that this is a very simplistic approach).
+   1. The container loops to recreate `secret_id` to prevent lockout of the webapp after the secret expiration (please consider that this is a very simplistic approach).
 1. The `webapp` container starts:
    1. The `vault-agent-data` volume is mounted.
    1. Several prerequisites are installed. The Vault agent is installed.
@@ -57,7 +61,7 @@ Here the list of things that happen when the infrastructure is created.
    1. The Vault agent is run with the configuration specified in the `vault-agent.hcl` file.
    1. The Flask web application is run.
 
-The Vault agent is it configured in `auto_auth` mode and it will use the `role_id` and the `role_secret` to obtain token and store it in the defined sink (`/vault-agent/vault-token-via-agent`). The Vault agent reads the format of the configuration file, needed by the application, that is defined in the `/vault-agent/config.tmpl` file and it produces, as an output, a destination file (`/webapp/config.ini`) that can be consumed by the web application itself.
+The Vault agent is it configured in `auto_auth` mode and it will use the `role_id` and the `secret_id` to obtain token and store it in the defined sink (`/vault-agent/vault-token-via-agent`). The Vault agent reads the format of the configuration file, needed by the application, that is defined in the `/vault-agent/config.tmpl` file and it produces, as an output, a destination file (`/webapp/config.ini`) that can be consumed by the web application itself.
 
 From the web application is it possible to dump the content of the configuration files. This allow to check what database and Vault credentials are used.
 
