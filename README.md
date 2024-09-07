@@ -61,9 +61,9 @@ Here the list of things that happen when the infrastructure is created.
    1. The Vault agent is run with the configuration specified in the `vault-agent.hcl` file.
    1. The Flask web application is run.
 
-The Vault agent is it configured in `auto_auth` mode and it will use the `role_id` and the `secret_id` to obtain token and store it in the defined sink (`/vault-agent/vault-token-via-agent`). The Vault agent reads the format of the configuration file, needed by the application, that is defined in the `/vault-agent/config.tmpl` file and it produces, as an output, a destination file (`/webapp/config.ini`) that can be consumed by the web application itself.
+The Vault agent is configured in `auto_auth` mode and it will use the `role_id` and the `secret_id` to obtain token and store it in the defined sink (`/vault-agent/vault-token-via-agent`). The Vault agent reads the format of the configuration file, needed by the application, that is defined in the `/vault-agent/config.tmpl` file and it produces, as an output, a destination file (`/webapp/config.ini`) that can be consumed by the web application itself.
 
-From the web application is it possible to dump the content of the configuration files. This allow to check what database and Vault credentials are used.
+From the web application is possible to dump the content of the configuration files. This allow to check what database and Vault credentials are used.
 
 ## Considerations and caveats
 
